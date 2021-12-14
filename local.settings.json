@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "UseDevelopmentStorage=true",
+    "FUNCTIONS_WORKER_RUNTIME": "node",
+    "WORKFLOWS_TENANT_ID": "325a786c-0871-4138-a02d-b767407113b5",
+    "WORKFLOWS_SUBSCRIPTION_ID": "ac3f2baa-83c9-48ac-b96d-cf13ba4ca679",
+    "WORKFLOWS_RESOURCE_GROUP_NAME": "vm3",
+    "WORKFLOWS_LOCATION_NAME": "uksouth",
+    "WORKFLOWS_MANAGEMENT_BASE_URI": "https://management.azure.com/"
+  }
+}
