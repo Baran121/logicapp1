@@ -1,7 +1,7 @@
 {
   "IsEncrypted": false,
   "Values": {
-    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=myown131;AccountKey=KzuCcEra458VF3Dn0K/QqQRh3KxSgsrEDBGXAwcEg5niICZX0dymQXTzJlHQTytCKaurZv75cAHSLNCuRdqKwA==;BlobEndpoint=https://myown131.blob.core.windows.net/;QueueEndpoint=https://myown131.queue.core.windows.net/;TableEndpoint=https://myown131.table.core.windows.net/;FileEndpoint=https://myown131.file.core.windows.net/;",
+    "AzureWebJobsStorage": "DefaultEndpointsProtocol=https;AccountName=myown132;AccountKey=cAULM1ouwecz5ZN+JyQ4weh9tbkGK0bJ6YEBYoQfCAQQuCwRNsCEilUl+cuOshpQC3W2r2Z6J1XAed9CfmZOXg==;BlobEndpoint=https://myown132.blob.core.windows.net/;QueueEndpoint=https://myown132.queue.core.windows.net/;TableEndpoint=https://myown132.table.core.windows.net/;FileEndpoint=https://myown132.file.core.windows.net/;",
     "FUNCTIONS_WORKER_RUNTIME": "node",
     "WORKFLOWS_TENANT_ID": "325a786c-0871-4138-a02d-b767407113b5",
     "WORKFLOWS_SUBSCRIPTION_ID": "ac3f2baa-83c9-48ac-b96d-cf13ba4ca679",
