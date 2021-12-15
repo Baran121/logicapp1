@@ -1,0 +1,19 @@
+apiVersion : apps/v1
+kind: Deployment
+metadata:
+  name: "aks3-304d"
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: "aks3-304d"
+  template:
+    metadata:
+      labels:
+        app: "aks3-304d"
+    spec:
+      containers:
+        - name: "aks3-304d"
+          image: "myown123.azurecr.io/aks3"
+          ports:
+          - containerPort: 80
