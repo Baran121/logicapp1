@@ -1,0 +1,50 @@
+on: [push]
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    
+    - uses: azure/docker-login@v1
+      with:
+        login-server: myown123.azurecr.io
+        username: ${{ secrets.acr_myown123_username }}
+        password: ${{ secrets.acr_myown123_password }}
+    
+    - name: Build and push image to ACR
+      id: build-image
+      run: |
+        docker build "$GITHUB_WORKSPACE/" -f  "Dockerfile" -t myown123.azurecr.io/aks3:${{ github.sha }} --label dockerfile-path=Dockerfile
+        docker push myown123.azurecr.io/aks3:${{ github.sha }}
+    
+    - uses: azure/k8s-set-context@v1
+      with:
+         kubeconfig: ${{ secrets.aks_aks3_kubeConfig }}
+      id: login
+    
+    - name: Create namespace
+      run: |
+        namespacePresent=`kubectl get namespace | grep aks3bc00 | wc -l`
+        if [ $namespacePresent -eq 0 ]
+        then
+            echo `kubectl create namespace aks3bc00`
+        fi
+
+    - uses: azure/k8s-create-secret@v1
+      with:
+        namespace: aks3bc00
+        container-registry-url: myown123.azurecr.io
+        container-registry-username: ${{ secrets.acr_myown123_username }}
+        container-registry-password: ${{ secrets.acr_myown123_password }}
+        secret-name: aks3dockerauth
+       
+    - uses: azure/k8s-deploy@v1.2
+      with:
+        namespace: aks3bc00
+        manifests: |
+          manifests/deployment-1.yml
+          manifests/service-1.yml
+        images: |
+          myown123.azurecr.io/aks3:${{ github.sha }}
+        imagepullsecrets: |
+          aks3dockerauth
